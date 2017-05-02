@@ -379,11 +379,16 @@ instance CBuilderModel3D Model3D where
 
     buildModel3D _ (Model3D_Obj name uuid version author descr tags cntObjs cntMtls) parentName (material, position, rotation, scale, script) = 
         if cntMtls == []
-        then do hjs $[julius| (function(){ |]
+        then do varMaterialName <- return $ genVarName "material" material
+                hjs $[julius| (function(material){ |]
                 hjs $[julius| 
                     var objLoader = new THREE.OBJLoader();
-                    objLoader.setMaterials(material);
                     objLoader.load("/model_3d/obj/#{rawJS uuid}", function(object) {
+                    object.traverse(function(child) {
+                        if (child instanceof THREE.Mesh){
+                            child.material = material;
+                        }
+                    });
                 |]
                 buildPosRotScale "object" position rotation scale
                 hjs $[julius| (function(figure){ #{rawJS script} })( object ); |]
@@ -391,7 +396,7 @@ instance CBuilderModel3D Model3D where
                         ;#{rawJS parentName}.add(object);
                     });
                 |]
-                hjs $[julius| })(); |]
+                hjs $[julius| })(#{rawJS varMaterialName}); |]
                 endBuild
         else do hjs $[julius| (function(){ |]
                 hjs $[julius| 

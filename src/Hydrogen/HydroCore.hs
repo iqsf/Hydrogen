@@ -60,7 +60,7 @@ cortegeKV = ( KeyEmpty :: KeyContext3D
 -- c - контекст приложения в котором генерируется сцена
 -- s - объект сцены
 class CBuilder3D s where
-    build3D :: (CContext3D c KeyContext3D String) => c -> s -> String -> HSL HLangJS HLangJS
+    build3D :: (CContext3D c KeyContext3D String) => c -> s -> ParentName -> HSL HLangJS HLangJS
 
 
 
@@ -68,7 +68,7 @@ class CBuilder3D s where
 -- c - контекст приложения в котором генерируется сцена
 -- s - объект сцены
 class CBuilderModel3D s where
-    buildModel3D :: (CContext3D c KeyContext3D String) => c -> s -> String -> (UUID_3D, Position3D, Rotation3D, Scale3D, String) -> HSL HLangJS HLangJS
+    buildModel3D :: (CContext3D c KeyContext3D String) => c -> s -> ParentName -> (UUID_3D, Position3D, Rotation3D, Scale3D, String) -> HSL HLangJS HLangJS
 
 
 
@@ -76,7 +76,7 @@ class CBuilderModel3D s where
 -- c - контекст приложения в котором генерируется сцена
 -- s - объект сцены
 class CBuilderFragment3D s where
-    buildFragment3D :: (CContext3D c KeyContext3D String) => c -> s -> String -> (UUID_3D, Position3D, Rotation3D, Scale3D, String) -> HSL HLangJS HLangJS
+    buildFragment3D :: (CContext3D c KeyContext3D String) => c -> s -> ParentName -> (UUID_3D, Position3D, Rotation3D, Scale3D, String) -> HSL HLangJS HLangJS
 
 
 

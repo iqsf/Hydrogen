@@ -21,6 +21,8 @@ module Hydrogen.Model.MSceneGeneral
     , Vector2D      (..)
     , Vector3D      (..)
 
+    , ParentName    (..)
+
     , UUID_2D       (..)
     , UUID_3D       (..)
     ) where
@@ -129,6 +131,11 @@ data Vector3D = Vector3D { v3d_x :: Double
                          , v3d_z :: Double
                          }
                          deriving (Show, Eq, Typeable, Generic)
+
+
+
+-- | Синоним типа для имени родителького объекта
+type ParentName = String 
 
 
 
