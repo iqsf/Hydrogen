@@ -2,16 +2,18 @@ name:                Hydrogen
 version:             0.1.0.0
 -- synopsis:
 -- description:
-homepage:            https://github.com/githubuser/Hydrogen#readme
+homepage:            https://github.com/iqsf/Hydrogen.git
 license:             BSD3
 license-file:        LICENSE
-author:              Author name here
-maintainer:          example@example.com
+author:              Pavel
+maintainer:          iqsf@ya.ru
 copyright:           2017 Author name here
 category:            Web
 build-type:          Simple
 extra-source-files:  README.md
 cabal-version:       >=1.10
+
+data-files: models/test/MyTest.scene 
 
 library
   hs-source-dirs:      src
@@ -24,6 +26,7 @@ library
                      , Hydrogen.Tool.TScene3D
                      , Hydrogen.Tool.TBuilder3D
                      , Hydrogen.Tool.TGeneratorS3D
+                     , Hydrogen.Demo.LibDemo 
 
                      , ThreeJS.HThreeJS
 
@@ -66,4 +69,4 @@ test-suite Hydrogen-test
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/Hydrogen
+  location: https://github.com/iqsf/Hydrogen

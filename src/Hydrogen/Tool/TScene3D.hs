@@ -5,7 +5,8 @@
 ----------------------------------------------------------------
 
 module Hydrogen.Tool.TScene3D
-    ( loadScene3D
+    ( parseSceneFile
+    , loadScene3D
     , loadTexture3D
     , loadModel3D
     , sayDebugMessage

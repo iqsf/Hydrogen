@@ -1,0 +1,274 @@
+#################################################################
+# Adamant Application                                           #
+# Powered by Haskell                                            #
+# Scene 3D in YAML format                                       #
+#################################################################
+
+---
+# Begin 3D scene
+tag: Scene3D
+s3d_name: Scene 3D (Default)
+s3d_uuid: "d7d3e5d4-de50-11e6-80e3-cb4e0b910fb7"
+
+s3d_version: 0.0.1
+
+s3d_author: User
+
+# The scene description
+s3d_descr: >-
+            This is description of testing 3D scene for demonstration 
+            working. This example will help you understand the format 
+            of the scene.
+
+# Geographic information binding
+s3d_geoPoint: { gp_lat: 55.774003, gp_lon: 37.592292}
+
+s3d_tags:
+    - Test
+    - Demo
+    - Debug
+
+
+# Patterns for fields
+s3d_t1: &patternPos { v3d_posX: 0, v3d_posY: 0, v3d_posZ: 0 }
+s3d_t2: &patternRot { v3d_rotX: 0, v3d_rotY: 0, v3d_rotZ: 0 }
+s3d_t3: &patternScl { v3d_sclX: 1, v3d_sclY: 1, v3d_sclZ: 1 }
+
+s3d_t4: &patternV2D { v3d_x: 0, v3d_y: 0 }
+s3d_t5: &patternV3D { v3d_x: 0, v3d_y: 0, v3d_z: 0 }
+
+s3d_m1: &patternM_1
+    m3d_color            : { tag: ColorRGB_3D, contents: [110, 110, 110] }
+    m3d_emissive         : { tag: ColorRGB_3D, contents: [110, 110, 110] }
+    m3d_emissiveIntensity: 0.5 
+    m3d_opacity          : 1.0
+    m3d_transparent      : False
+
+
+s3d_position: {<<: *patternPos}
+s3d_rotation: {<<: *patternRot}
+s3d_scale   : {<<: *patternScl}
+
+
+# The scene script
+#s3d_script: ""   
+s3d_script: |
+    if(orbitControls){
+        orbitControls.minDistance = 3;
+        orbitControls.maxDistance = 20;
+        orbitControls.minPolarAngle = 0; 
+        orbitControls.maxPolarAngle = 1.50098;
+    }
+
+
+
+# Materials of scene
+s3d_materials:
+
+    - tag: Material
+      m3d_name: Default material
+      m3d_uuid: "239e3faa-de51-11e6-b31a-3b6189350ce9"
+
+    - tag: MaterialLambert
+      m3d_name             : MyMaterial_1
+      m3d_uuid             : "4466976e-de51-11e6-a5d3-f3eee64202b6"
+      m3d_color            : { tag: ColorRGB_3D, contents: [110, 110, 110] }
+      m3d_emissive         : { tag: ColorRGB_3D, contents: [110, 110, 110] }
+      m3d_emissiveIntensity: 0.5 
+      m3d_opacity          : 1.0
+      m3d_transparent      : False
+      m3d_script           : ""
+
+    - tag: MaterialLambert
+      m3d_name             : MyMaterial_2
+      m3d_uuid             : "e6f1bd16-e2fb-11e6-87c7-1772a2fe4228"
+      m3d_color            : { tag: ColorRGB_3D, contents: [10, 65, 10] }
+      m3d_emissive         : { tag: ColorRGB_3D, contents: [110, 0, 110] }
+      m3d_emissiveIntensity: 0.0 
+      m3d_opacity          : 1.0
+      m3d_transparent      : False
+      m3d_script           : ""
+
+    - tag: MaterialBasic
+      m3d_name             : MyMaterial_Ground
+      m3d_uuid             : "4e181b50-e3bc-11e6-924d-8bbeaf59f608"
+      m3d_texture          : "3165d44e-e398-11e6-aac6-e7c59ca562a2"
+      m3d_emissiveIntensity: 0.0 
+      m3d_opacity          : 1.0
+      m3d_transparent      : False
+      m3d_script           : ""
+
+    - tag: MaterialFace
+      m3d_name             : MyMaterial_SkyBox
+      m3d_uuid             : "7badc81a-e6b6-11e6-9cc1-2b72c18ca176"
+      m3d_texture          : "6b6fc102-e462-11e6-88eb-433f284ad9f1"
+      m3d_emissiveIntensity: 0.0 
+      m3d_opacity          : 1.0
+      m3d_transparent      : False
+      m3d_script           : ""
+
+
+
+# Camera of scene
+s3d_camera:
+    tag: CameraPerspective3D
+    c3d_name     : MyCamera
+    c3d_uuid     : "ad8120fe-ef7f-11e6-b685-47a21a9ccdd2"
+    c3d_position : {<<: *patternPos, v3d_posY: -10, v3d_posZ: 10}
+    c3d_scale    : {<<: *patternScl}
+    c3d_fov      : 45
+    c3d_near     : 1
+    c3d_far      : 1000
+    c3d_zoom     : 1.0
+    c3d_up       : {<<: *patternV3D, v3d_z: 1}
+    c3d_script   : ""   
+    c3d_children :
+
+        - tag: FLPointLight3D   
+          l3d_name      : MyPointLight 
+          l3d_uuid      : "e436c6c8-f1d5-11e6-837c-afadb174b93a"
+          l3d_flagDraw  : ON
+          l3d_color     : "0xFFFFFF"
+          l3d_intensity : 0.8
+          l3d_distance  : 0 
+          l3d_decay     : 1
+          l3d_position  : {<<: *patternPos}
+          l3d_script    : ""   
+
+
+
+# Environments of scene
+s3d_envirs:
+
+    - tag: FLAmbientLight3D 
+      l3d_name      : MyAmbientLight
+      l3d_uuid      : "9ab6f73c-f1d2-11e6-ad6c-23968912c3bd"
+      l3d_flagDraw  : ON
+      l3d_color     : "0x999999"
+      l3d_intensity : 1.0
+      l3d_script    : ""   
+
+    - tag: FBox3D
+      f3d_name    : MySkyBox
+      f3d_uuid    : "5d2f5584-e6b6-11e6-b1e0-07ba4b916aa0"
+      f3d_flagDraw: ON
+      f3d_material: "7badc81a-e6b6-11e6-9cc1-2b72c18ca176"
+      f3d_position: {<<: *patternPos}
+      f3d_rotation: {<<: *patternRot, v3d_rotX: 1.570796}
+      f3d_scale   : {<<: *patternScl}
+      f3d_sizeX   : 500
+      f3d_sizeY   : 500
+      f3d_sizeZ   : 500
+      f3d_script  : ""  
+
+
+
+# Content of scene
+s3d_children:
+
+    - tag: FGroup3D
+      f3d_name    : MyGroup
+      f3d_uuid    : "20c55aec-e15e-11e6-9b09-a74605bb9055"
+      f3d_flagDraw: ON
+      f3d_position: {<<: *patternPos}
+      f3d_rotation: {<<: *patternRot}
+      f3d_scale   : {<<: *patternScl}
+      f3d_script  : ""   
+      f3d_children:
+
+          - tag: FBox3D
+            f3d_name    : MyBox
+            f3d_uuid    : "1a49493a-de52-11e6-8860-4725afee8c70"
+            f3d_flagDraw: OFF
+            f3d_material: "4466976e-de51-11e6-a5d3-f3eee64202b6"
+            f3d_position: {<<: *patternPos, v3d_posZ: 1 }
+            f3d_rotation: {<<: *patternRot}
+            f3d_scale   : {<<: *patternScl}
+            f3d_sizeX   : 3
+            f3d_sizeY   : 2
+            f3d_sizeZ   : 1
+            f3d_script  : ""   
+
+          - tag: FPlane3D
+            f3d_name    : MyPlane
+            f3d_uuid    : "22f6f794-de52-11e6-b97a-9bf7977de4ff"
+            f3d_flagDraw: OFF
+            f3d_material: "4e181b50-e3bc-11e6-924d-8bbeaf59f608"
+            f3d_position: {<<: *patternPos, v3d_posZ: 0.01}
+            f3d_rotation: {<<: *patternRot}
+            f3d_scale   : {<<: *patternScl}
+            f3d_sizeX   : 30
+            f3d_sizeY   : 30
+            f3d_script  : ""   
+
+          - tag: FScript3D 
+            f3d_name     : MyFigureScript
+            f3d_uuid     : "1743e5ea-f2a9-11e6-9ed1-7714401e4924"
+            f3d_flagDraw : ON
+            f3d_material : "4466976e-de51-11e6-a5d3-f3eee64202b6"
+            f3d_position : {<<: *patternPos, v3d_posY: 4.0}
+            f3d_rotation : {<<: *patternRot}
+            f3d_scale    : {<<: *patternScl}
+            f3d_flagExt  : False
+            f3d_params   : ["Test", "1.0"]
+            f3d_scriptDo : |
+                var geometry = new THREE.SphereGeometry( 1, 32, 32 );
+                var sphere = new THREE.Mesh( geometry, material );   
+                return sphere;
+            f3d_script   : ""   
+                          
+          - tag: FEntityCamera3D
+            e3d_name     : MyCamera3D
+            e3d_uuid     : "45d7b56a-edf1-11e6-be1d-539a6d03a9c1"
+            e3d_flagDraw : ON
+            e3d_position : {<<: *patternPos, v3d_posZ: 0}
+            e3d_rotation : {<<: *patternRot, v3d_rotY: 1.57}
+            e3d_scale    : {<<: *patternScl}
+            e3d_params   : ""
+            e3d_source   : "/video/sintel.ogv"
+                         #  draw   color       geom  scale
+            e3d_options  : [ ON , "0xFF0000" , 0.5 , 0.35 ]
+            e3d_opacity  : 1.0
+            e3d_scrnSide : BackSide 
+                         #     N    SZx  SZy    px   py   pz     rx   ry   rz      sx   sy   sz      dx0  dy0  dz0     dx1  dy1  dz1    dx2  dy2  dz2    dx3  dy3  dz3    Area [(x0,y0) ... (x3,y3)]
+            e3d_screens  : [ [ 0,   2.0, 2.0,   0.0, 0.0, 3.0,   0.0, 0.0, 1.57,   1.0, 1.0, 1.0,    0.0, 0.0, 0.0,    0.0, 0.0, 0.0,   0.0, 0.0, 0.0,   0.0, 0.0, 0.0,   0.0,1.0 , 0.5,1.0 , 0.5,0.0 , 0.0,0.0 ]
+                           , [ 1,   2.0, 1.0,   0.0, 3.0, 4.0,   0.0, 0.0, 1.57,   1.0, 1.0, 1.0,    0.0, 0.0, 0.0,    0.0, 0.0, 0.0,   0.0, 0.0, 0.0,   0.0, 0.0, 0.0,   0.5,1.0 , 1.0,1.0 , 1.0,0.0 , 0.5,0.0 ]
+                           ]
+            e3d_script   : ""   
+
+
+    - tag: FGroup3D
+      f3d_name    : MyGroup_2
+      f3d_uuid    : "c34cbde4-e7b9-11e6-a0a3-6bff2604ce8f"
+      f3d_flagDraw: ON
+      f3d_position: {<<: *patternPos}
+      f3d_rotation: {<<: *patternRot}
+      f3d_scale   : {<<: *patternScl}
+      f3d_script  : ""   
+      f3d_children:
+
+          - tag: FModel3D
+            f3d_name    : MyObj
+            f3d_uuid    : "f0344534-e7b9-11e6-a116-631ad7dbb628"
+            f3d_flagDraw: OFF
+            f3d_material: ""
+            f3d_position: {<<: *patternPos, v3d_posX: -3.0, v3d_posZ: 2.0 }
+            f3d_rotation: {<<: *patternRot, v3d_rotX: 1.507 }
+            f3d_scale   : {<<: *patternScl}
+            f3d_model   : "cc5af380-e79e-11e6-88d5-035e6ef28b36"   
+            f3d_script  : ""   
+
+          - tag: FModel3D
+            f3d_name    : MyObj_BuildChayanova
+            f3d_uuid    : "1a458d20-e868-11e6-b256-b387c16aa9d8"
+            f3d_flagDraw: OFF
+            f3d_material: "4466976e-de51-11e6-a5d3-f3eee64202b6"
+            f3d_position: {<<: *patternPos, v3d_posX: 5.0, v3d_posZ: 2.0 }
+            f3d_rotation: {<<: *patternRot, v3d_rotX: 1.57079632679 }
+            f3d_scale   : {<<: *patternScl}
+            f3d_model   : "0b4a2f0a-e7a1-11e6-8ba4-2b23f11b6a84"   
+            f3d_script  : ""   
+
+
+
+
