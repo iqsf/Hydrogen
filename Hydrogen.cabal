@@ -1,7 +1,7 @@
 name:                Hydrogen
 version:             0.1.0.0
--- synopsis:
--- description:
+synopsis:            The library for generating a WebGL scene for the web
+description:         The library for generating a WebGL scene for the web for the Haskell programming language.
 homepage:            https://github.com/iqsf/Hydrogen.git
 license:             BSD3
 license-file:        LICENSE
