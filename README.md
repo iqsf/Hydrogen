@@ -11,7 +11,7 @@ Below is an example generation scene from [YAML file](https://github.com/iqsf/Hy
 ```
 /*Generate by HScript from the HFitUI library*/
 //Автоматически сгенерированный скрипт
-//Приложение Adamant (0.0.1)
+//Приложение Hydrogen (0.0.1)
 if(!Detector.webgl) Detector.addGetWebGLMessage();
  
 var camera;

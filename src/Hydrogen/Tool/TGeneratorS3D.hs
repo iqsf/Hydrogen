@@ -53,7 +53,7 @@ generateWGLScene3D :: (CContext3D c KeyContext3D String)
 --    return endH
 generateWGLScene3D app scene3D idRoot idCanvas sopts = do
     (//) "Автоматически сгенерированный скрипт"
-    (//) "Приложение Adamant (0.0.1)"
+    (//) "Приложение Hydrogen (0.0.1)"
 
     detectorWebGL >> hjsBR 
 
