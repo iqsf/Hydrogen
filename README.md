@@ -1,8 +1,12 @@
 # Hydrogen
 
-test
+## Introduction
+Library for generating a WebGL scene by using [ThreeJS](https://threejs.org) on the web for the Haskell programming language.
 
-tst
+## Short description
+The **Hydrogen** uses the [HFitUI](http://hackage.haskell.org/package/HFitUI) library as the result of generating a WebGL scene. The WebGL scene is generated from a YAML file. This approach greatly simplifies the process of generating a WebGL scene in a Haskell with [HFitUI](http://hackage.haskell.org/package/HFitUI) library.
+Below is an example generation scene from [YAML file](https://github.com/iqsf/Hydrogen/blob/master/models/test/MyTest.scene) code:
+
 
 ```
 /*Generate by HScript from the HFitUI library*/
